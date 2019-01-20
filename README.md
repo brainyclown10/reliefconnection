@@ -6,7 +6,7 @@ Relief Connection is an webapp that helps emergency services staff to plot a pat
 
 The technologies used to create this webapp include Python, gmplot, and HTML.
 
-### Contributers
+## Contributers
 
 The contributers to this project include Brandon Hu, Chris Chan, Juston Ko, and
 Naveen Sabharwal.
