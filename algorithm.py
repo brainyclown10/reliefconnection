@@ -2,9 +2,7 @@ import random
 import math
 from randompointgenerator import LatLongList
 
-
 class vertex:
-
     def __init__(self, xValIn, yValIn):
         self.xVal = xValIn
         self.yVal = yValIn
@@ -17,16 +15,29 @@ def distance(first, second, vert):
 
     return math.sqrt(math.pow(xVal, 2) + math.pow(yVal, 2))
 
-
 class theTSP:
 
     theFinal = []
     theWeight = 0
 
-    def __init__(self, num):
-        numVec = num
+    class vertex:
+        def __init__(self, xValIn, yValIn):
+            self.xVal = xValIn
+            self.yVal = yValIn
+            self.checked = False
+
+    def distance(first, second, vert) :
+
+        xVal = float(vert[first].xVal - vert[second].xVal)
+        yVal = float(vert[first].yVal - vert[second].yVal)
+
+        return math.sqrt(math.pow(xVal, 2) + math.pow(yVal, 2))
+
+    def run(self):
         theWorld = []
+        numVec = random.randint(3, 101)
         masterList = LatLongList(numVec)
+
 
         i = 0
         while i < numVec:
@@ -73,24 +84,37 @@ class theTSP:
             i += 1
 
         weight = float(distance(parents[0], parents[numVec - 1], theWorld))
+
+        heaviestDist = weight
+        heaviestNum = numVec - 1
+
         i = 0
         while i < numVec - 1:
+            if distance(parents[i], parents[i + 1], theWorld) > heaviestDist:
+                heaviestDist = distance(parents[i], parents[i + 1], theWorld)
+                heaviestNum = i
             weight += distance(parents[i], parents[i + 1], theWorld)
             i += 1
 
-        # print(repr(round(weight * 69, 6)) + ' miles')
+
+        #print(repr(round(weight * 69, 6)) + ' miles')
+        weight -= heaviestDist
         self.theWeight = weight * 69
 
-        '''
-        i = 0
+
+        '''i = 0
         while i < numVec:
             toBePrinted = repr(round(theWorld[parents[i]].xVal, 6)) + ' ' + repr(round(theWorld[parents[i]].yVal, 6))
             print(toBePrinted)
+            i += 1'''
+
+        i = heaviestNum + 1
+        while i < numVec:
+            self.theFinal.append((theWorld[parents[i]].xVal, theWorld[parents[i]].yVal))
             i += 1
-        '''
 
         i = 0
-        while i < numVec:
+        while i < heaviestNum + 1:
             self.theFinal.append((theWorld[parents[i]].xVal, theWorld[parents[i]].yVal))
             i += 1
 
@@ -99,6 +123,7 @@ class theTSP:
 
     def getWeight(self):
         return self.theWeight
+
 
 # For printing/testing purposes
 #
