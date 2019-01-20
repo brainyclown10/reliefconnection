@@ -6,17 +6,15 @@ Created on Sat Jan 19 14:06:38 2019
 @author: christopherchen
 """
 from gmplot import gmplot
+from algorithm import theTSP
 
 # Place map
 gmap = gmplot.GoogleMapPlotter(42.726215, -84.488677, 13)
 
-#coordinates in order of rescue
-rescue_route = [
-    (37.771269, -122.511015),
-    (37.773495, -122.464830),
-    (38.7713, -123.5110),
-    (38.7735, -125.4648)
-    ]
+# coordinates in order of rescue
+tsp = theTSP(40)    # initialize object
+rescue_route = tsp.getList()
+rescue_route_length = tsp.getWeight()
 
 # Polygon
 east_lansing_lats, east_lansing_lons = zip(*rescue_route)

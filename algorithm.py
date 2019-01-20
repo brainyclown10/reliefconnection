@@ -2,7 +2,9 @@ import random
 import math
 from randompointgenerator import LatLongList
 
+
 class vertex:
+
     def __init__(self, xValIn, yValIn):
         self.xVal = xValIn
         self.yVal = yValIn
@@ -15,29 +17,16 @@ def distance(first, second, vert):
 
     return math.sqrt(math.pow(xVal, 2) + math.pow(yVal, 2))
 
+
 class theTSP:
 
     theFinal = []
     theWeight = 0
 
-    class vertex:
-        def __init__(self, xValIn, yValIn):
-            self.xVal = xValIn
-            self.yVal = yValIn
-            self.checked = False
-
-    def distance(first, second, vert) :
-
-        xVal = float(vert[first].xVal - vert[second].xVal)
-        yVal = float(vert[first].yVal - vert[second].yVal)
-
-        return math.sqrt(math.pow(xVal, 2) + math.pow(yVal, 2))
-
-    def run(self):
+    def __init__(self, num):
+        numVec = num
         theWorld = []
-        numVec = random.randint(3, 101)
         masterList = LatLongList(numVec)
-
 
         i = 0
         while i < numVec:
@@ -89,16 +78,16 @@ class theTSP:
             weight += distance(parents[i], parents[i + 1], theWorld)
             i += 1
 
-
-        #print(repr(round(weight * 69, 6)) + ' miles')
+        # print(repr(round(weight * 69, 6)) + ' miles')
         self.theWeight = weight * 69
 
-
-        '''i = 0
+        '''
+        i = 0
         while i < numVec:
             toBePrinted = repr(round(theWorld[parents[i]].xVal, 6)) + ' ' + repr(round(theWorld[parents[i]].yVal, 6))
             print(toBePrinted)
-            i += 1'''
+            i += 1
+        '''
 
         i = 0
         while i < numVec:
@@ -111,13 +100,14 @@ class theTSP:
     def getWeight(self):
         return self.theWeight
 
-
-driver = theTSP()
-
-driver.run()
-print(driver.getWeight())
-i = 0
-while i < len(driver.getList()):
-        toBePrinted = repr(round(driver.getList()[i][0], 6)) + ' ' + repr(round(driver.getList()[i][1], 6))
-        print(toBePrinted)
-        i += 1
+# For printing/testing purposes
+#
+# driver = theTSP(10)
+#
+# driver.run()
+# print(driver.getWeight())
+# i = 0
+# while i < len(driver.getList()):
+#         toBePrinted = repr(round(driver.getList()[i][0], 6)) + ' ' + repr(round(driver.getList()[i][1], 6))
+#         print(toBePrinted)
+#         i += 1

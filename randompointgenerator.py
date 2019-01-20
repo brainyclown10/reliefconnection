@@ -12,7 +12,8 @@ class LatLongList:
         return self.l
 
 
-pointslist = LatLongList(10)
-li = pointslist.getlist()
-print(li)
+# For testing purposes
+# pointslist = LatLongList(10)
+# li = pointslist.getlist()
+# print(li)
 
