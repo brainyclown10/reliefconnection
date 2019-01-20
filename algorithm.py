@@ -33,9 +33,8 @@ class theTSP:
 
         return math.sqrt(math.pow(xVal, 2) + math.pow(yVal, 2))
 
-    def run(self):
+    def __init__(self, numVec):
         theWorld = []
-        numVec = random.randint(3, 101)
         masterList = LatLongList(numVec)
 
 
