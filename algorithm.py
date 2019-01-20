@@ -20,23 +20,9 @@ class theTSP:
     theFinal = []
     theWeight = 0
 
-    class vertex:
-        def __init__(self, xValIn, yValIn):
-            self.xVal = xValIn
-            self.yVal = yValIn
-            self.checked = False
-
-    def distance(first, second, vert) :
-
-        xVal = float(vert[first].xVal - vert[second].xVal)
-        yVal = float(vert[first].yVal - vert[second].yVal)
-
-        return math.sqrt(math.pow(xVal, 2) + math.pow(yVal, 2))
-
     def __init__(self, numVec):
         theWorld = []
         masterList = LatLongList(numVec)
-
 
         i = 0
         while i < numVec:
@@ -95,17 +81,17 @@ class theTSP:
             weight += distance(parents[i], parents[i + 1], theWorld)
             i += 1
 
-
-        #print(repr(round(weight * 69, 6)) + ' miles')
+        # print(repr(round(weight * 69, 6)) + ' miles')
         weight -= heaviestDist
         self.theWeight = weight * 69
 
-
-        '''i = 0
+        '''
+        i = 0
         while i < numVec:
             toBePrinted = repr(round(theWorld[parents[i]].xVal, 6)) + ' ' + repr(round(theWorld[parents[i]].yVal, 6))
             print(toBePrinted)
-            i += 1'''
+            i += 1
+        '''
 
         i = heaviestNum + 1
         while i < numVec:
